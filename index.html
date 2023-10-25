@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Css</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="sec">
+        <div class="toggle"></div>
+        <div class="box">
+            <div class="content">
+                <h3>Battery</h3>
+                <div class="batteryshape">
+                    <div class="level">
+                        <div class="percentage"></div>
+                    </div>
+                </div>
+                <div class="percent">50%</div>
+            </div>
+        </div>
+    </section>
+    <script>
+        let percent = document.querySelector('.percent')
+        let percentage = document.querySelector('.percentage');
+        navigator.getBattery().then(function (Battery)
+        {
+            percentage.style.width = Battery.level * 100 + '%';
+            percent.innerHTML = Battery.level * 100 + '%';
+        })
+        let sec = document.querySelector('.sec');
+        let toggle = document.querySelector('.toggle');
+        toggle.onclick = function()
+        {
+            sec.classList.toggle('dark')
+        }
+    </script>
+</body>
+
+</html>
